@@ -48,7 +48,7 @@ def main():
         
         df = preprocessor.preprocess(data) # GETTING DATAFRAME FROM THAT RAW TEXT DATA 
 
-        st.dataframe(df)    
+        #st.dataframe(df)    
         
         # FETCHING UNIQUE USERS-->(TO DISPLAY IN SELECT BOX)
         user_list = df['user'].unique().tolist()
@@ -114,6 +114,7 @@ def main():
                         font_family='Rockwell',
                         font_color='#00FFFF'
                     ))
+            fig.update_xaxes(tickangle=45)
             st.plotly_chart(fig,use_container_width=True)
             
             st.write('- - -')
@@ -146,6 +147,7 @@ def main():
                         font_family='Rockwell',
                         font_color='#00FF00'
                     ))
+            fig.update_xaxes(tickangle=45)
             st.plotly_chart(fig,use_container_width=True)
             
             st.write('- - -')
@@ -187,7 +189,7 @@ def main():
                         font_family='Rockwell',
                         font_color='#FFD700'
                     ))
-            
+                fig.update_xaxes(tickangle=45)
                 st.plotly_chart(fig,use_container_width=True)
                 
             with col2:
@@ -223,7 +225,7 @@ def main():
                         font_family='Rockwell',
                         font_color='#FF7F50'
                     ))
-                
+                fig.update_xaxes(tickangle=45)
                 st.plotly_chart(fig,use_container_width=True)
             
             
@@ -285,7 +287,7 @@ def main():
                         font_family='Rockwell',
                         font_color='#FA234C'
                     ))
-                    
+                    fig.update_xaxes(tickangle=45)
                     st.plotly_chart(fig,use_container_width=True)
                 
                 with col2:
