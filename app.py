@@ -159,9 +159,8 @@ def main():
                 days_count_df = helper.week_activity_map(selected_user, df)
                 st.dataframe(days_count_df)
                 # RENAME COLUMNS(index -> Day)
-                #days_count_df = days_count_df.rename(columns={'index':'Day',
-                                              'day_name':'day_name'})
-                
+                #days_count_df = days_count_df.rename(columns={'index':'Day','day_name':'day_name'})
+                                              
                 # PLOTLY EXPRESS BAR PLOT
                 #fig = px.bar(data_frame=days_count_df,x=days_count_df['Day'],y=days_count_df['day_name'])
                 
@@ -195,9 +194,8 @@ def main():
                 months_count_df = helper.month_activity_map(selected_user, df)
                 st.dataframe(months_count_df)
                 # RENAME COLUMNS(index -> Month)
-                #months_count_df = months_count_df.rename(columns={'index':'Month',
-                                              'day_name':'month'})
-                
+                #months_count_df = months_count_df.rename(columns={'index':'Month','day_name':'month'})
+                                              
                 # PLOTLY EXPRESS BAR PLOT
                 #fig = px.bar(data_frame=months_count_df,x=months_count_df['Month'],y=months_count_df['month'])
                 
