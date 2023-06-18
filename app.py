@@ -253,8 +253,8 @@ def main():
                 header('Most Active users')
                 x, new_df = helper.most_busy_users(df)
                 # RENAMING COLUMNS
-                #x = x.rename(columns={'index':'User',
-                                              'day_name':'user'})
+                #x = x.rename(columns={'index':'User','day_name':'user'})
+                                              
                 
                 col1,col2 = st.columns((2,1))  # 1 COL TO DISPLAY BAR PLOT,OTHER FOR DATAFRAME
                 
