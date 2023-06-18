@@ -253,14 +253,15 @@ def main():
                 header('Most Active users')
                 x, new_df = helper.most_busy_users(df)
                 # RENAMING COLUMNS
-                x = x.rename(columns={'index':'User',
+                #x = x.rename(columns={'index':'User',
                                               'day_name':'user'})
                 
                 col1,col2 = st.columns((2,1))  # 1 COL TO DISPLAY BAR PLOT,OTHER FOR DATAFRAME
                 
                 with col1:
+                    st.dataframe(x)
                     # BARPLOT
-                    fig = px.bar(data_frame=x,x=x['User'],y=x['user'])
+                    #fig = px.bar(data_frame=x,x=x['User'],y=x['user'])
                     
                     # UPDATING FIG
                     fig.update_traces(marker_color='#FA234C')
@@ -285,7 +286,7 @@ def main():
                         font_color='#FA234C'
                     ))
                     
-                    st.plotly_chart(fig,use_container_width=True)
+                    #st.plotly_chart(fig,use_container_width=True)
                 
                 with col2:
                     new_df.index = range(1, len(new_df) + 1) # CHANGING INDEX RANGE OF DATAFRAME
