@@ -46,7 +46,7 @@ def main():
         
         data = bytes_data.decode('utf-8') # CONVERTING TO STRING
         
-        df = new_preprocessor.preprocess(data) # GETTING DATAFRAME FROM THAT RAW TEXT DATA 
+        df = preprocessor.preprocess(data) # GETTING DATAFRAME FROM THAT RAW TEXT DATA 
 
         st.dataframe(df)    
         
