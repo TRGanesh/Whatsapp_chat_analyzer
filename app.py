@@ -1,6 +1,6 @@
 # IMPORTING REQUIRED LIBRARIES
 import streamlit as st
-import new_preprocessor
+import preprocessor
 import helper
 import matplotlib.pyplot as plt
 import seaborn as sns
