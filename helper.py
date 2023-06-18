@@ -76,7 +76,7 @@ def fetch_stats(selected_user,df):
         words.extend(message.split()) 
     
     # GETTING NUMBER OF MEDIA FILES SHARED IN CHAT    
-    num_media_messages = df[df['message']=='<Media omitted>\n'].shape[0] 
+    num_media_messages = df[df['message']=='<Media omitted>'].shape[0] 
     
     links = [] # LIST TO STORE NUMBER OF LINKS SHARED IN CHAT
     for message in df['message']:
@@ -111,7 +111,7 @@ def create_wordcloud(selected_user,df):
     # REMOVE GROUP NOTIFICATIONS
     temp = df[df['user']!='group notification']
     # REMOVE MEDIA OMMITTED 
-    temp = temp[temp['message'] != '<Media omitted>\n']    
+    temp = temp[temp['message'] != '<Media omitted>']    
     
     words = []  # CREATING A LIST TO STORE THE WORDS
     # REMOVING STOPWORDS FROM MESSAGES AND THEN APPENDING INTO LIST
@@ -142,7 +142,7 @@ def most_common_words(selected_user,df):
     # REMOVE GROUP NOTIFICATIONS
     temp = df[df['user']!='group notification']
     # REMOVE MEDIA OMMITTED 
-    temp = temp[temp['message'] != '<Media omitted>\n']
+    temp = temp[temp['message'] != '<Media omitted>']
     
     words = []  # CREATING A LIST TO STORE THE WORDS
     # REMOVING STOPWORDS FROM MESSAGES AND THEN APPENDING INTO LIST
