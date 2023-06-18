@@ -4,13 +4,13 @@ from wordcloud import WordCloud
 from collections import Counter
 import pandas as pd
 import emoji
-import regex as re
+import re
 import string
 
 extractor = URLExtract() # URL EXTRACTOR
 
 # GET STOPWORDS OF ENGLISH
-f = open('/Users/mac/Downloads/Model_Deployment_1/Whatsapp_chat_analyzer/stop_words_english.txt','r')
+f = open('stop_words_english.txt','r')
 stop_words = f.read()
 
 # FUNCTION TO REMOVE EMOJI'S
@@ -99,7 +99,7 @@ def most_busy_users(df):
     # x HAS USER'S VALUE_COUNTS
     x = x.to_frame().reset_index(drop=False) # x has 2 columns index,user
     
-    df = round((df['user'].value_counts()/df.shape[0])*100,2).reset_index().rename(columns={'index':'name','user':'percent'})
+    df = round((df['user'].value_counts()/df.shape[0])*100,2).reset_index()
     
     return x, df # X IS USED TO PLOT BAR,,DF IS DISPLAYED
 
@@ -111,7 +111,7 @@ def create_wordcloud(selected_user,df):
     # REMOVE GROUP NOTIFICATIONS
     temp = df[df['user']!='group notification']
     # REMOVE MEDIA OMMITTED 
-    temp = temp[temp['message'] != '<Media omitted>']    
+    temp = temp[temp['message'] != '<Media omitted>\n']    
     
     words = []  # CREATING A LIST TO STORE THE WORDS
     # REMOVING STOPWORDS FROM MESSAGES AND THEN APPENDING INTO LIST
@@ -142,7 +142,7 @@ def most_common_words(selected_user,df):
     # REMOVE GROUP NOTIFICATIONS
     temp = df[df['user']!='group notification']
     # REMOVE MEDIA OMMITTED 
-    temp = temp[temp['message'] != '<Media omitted>']
+    temp = temp[temp['message'] != '<Media omitted>\n']
     
     words = []  # CREATING A LIST TO STORE THE WORDS
     # REMOVING STOPWORDS FROM MESSAGES AND THEN APPENDING INTO LIST
@@ -220,13 +220,13 @@ def week_activity_map(selected_user,df):
       # GETTING VALUE_COUNTS OF EACH DAY(as a dataframe)
       days_count_df = df['day_name'].value_counts().to_frame().reset_index(drop=False) 
       
-      # days_count_df HAS 2 COLUMNS index(having real day names),day_name(having count),,
+      # days_count_df HAS 2 COLUMNS day_name,count
       # SORTING BASED ON KEY 
-      days_count_df = days_count_df.sort_values(by='index', key=lambda x: x.map({day: i for i, day in enumerate(day_order)})) 
+      days_count_df = days_count_df.sort_values(by='day_name', key=lambda x: x.map({day: i for i, day in enumerate(day_order)})) 
         
       return days_count_df
   
-# FUNCTIONN TO RETURN WEEKLY ACTIVITY MAP  
+# FUNCTIONN TO RETURN MONTHLY ACTIVITY MAP  
 def month_activity_map(selected_user,df):
     if selected_user!='Overall':
         df = df[df['user']==selected_user]
@@ -240,7 +240,7 @@ def month_activity_map(selected_user,df):
     
     # months_count_df HAS 2 COLUMNS index(having real month names),month(having count),,
     # SORTING BASED ON KEY 
-    months_count_df = months_count_df.sort_values(by='index', key=lambda x: x.map({day: i for i, day in enumerate(month_order)}))   
+    months_count_df = months_count_df.sort_values(by='month', key=lambda x: x.map({day: i for i, day in enumerate(month_order)}))   
     
     return months_count_df
 
