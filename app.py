@@ -157,12 +157,13 @@ def main():
             with col1:
                 subheader('Most Active day')
                 days_count_df = helper.week_activity_map(selected_user, df)
-                st.dataframe(days_count_df)
+                #st.dataframe(days_count_df)
+                
                 # RENAME COLUMNS(index -> Day)
                 #days_count_df = days_count_df.rename(columns={'index':'Day','day_name':'day_name'})
                                               
                 # PLOTLY EXPRESS BAR PLOT
-                #fig = px.bar(data_frame=days_count_df,x=days_count_df['Day'],y=days_count_df['day_name'])
+                fig = px.bar(data_frame=days_count_df,x=days_count_df['day_name'],y=days_count_df['count'])
                 
                 # UPDATING THE FIG
                 fig.update_traces(marker_color='#FFD700')
@@ -187,17 +188,18 @@ def main():
                         font_color='#FFD700'
                     ))
             
-                #st.plotly_chart(fig,use_container_width=True)
+                st.plotly_chart(fig,use_container_width=True)
                 
             with col2:
                 subheader('Most Active month')
                 months_count_df = helper.month_activity_map(selected_user, df)
-                st.dataframe(months_count_df)
+                #st.dataframe(months_count_df)
+                
                 # RENAME COLUMNS(index -> Month)
                 #months_count_df = months_count_df.rename(columns={'index':'Month','day_name':'month'})
                                               
                 # PLOTLY EXPRESS BAR PLOT
-                #fig = px.bar(data_frame=months_count_df,x=months_count_df['Month'],y=months_count_df['month'])
+                fig = px.bar(data_frame=months_count_df,x=months_count_df['month'],y=months_count_df['count'])
                 
                 # UPDATING THE FIG
                 fig.update_traces(marker_color='#FF7F50')
@@ -222,7 +224,7 @@ def main():
                         font_color='#FF7F50'
                     ))
                 
-                #st.plotly_chart(fig,use_container_width=True)
+                st.plotly_chart(fig,use_container_width=True)
             
             
             # ACTIVITY HEAT MAP        
