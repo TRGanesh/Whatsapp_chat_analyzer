@@ -386,6 +386,19 @@ def main():
                 )
                 st.plotly_chart(fig,use_container_width=True)
 
+                # SENTIMENT ANALYSIS
+                header('Sentiment Analysis')
+                unstack_df = helper.get_sentiment(selected_user,df)
+                sent_df = pd.DataFrame() 
+                if selected_user=='Overall':
+                    fig = px.bar(unstack_df,labels={'value':'message count'})
+                else:
+                    sent_df = unstack_df.reset_index().T.reset_index()
+                    fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],
+                                            values = sent_df.iloc[1:,:][0]))
+            #st.dataframe(sent_df)   
+            st.plotly_chart(fig,use_container_width=True)
+
                 
 if __name__ == '__main__':
     main()
