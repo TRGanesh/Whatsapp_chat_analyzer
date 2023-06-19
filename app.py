@@ -408,10 +408,10 @@ def main():
                               xaxis_tickfont=dict(size=15), # CHANGING SIZE OF X-TICKS
                               yaxis_tickfont=dict(size=15) # CHANGING SIZE OF Y-TICKS
                               )
-                        # LAYOUT FOR HOVER BOX
-                        fig.update_layout(hoverlabel=dict(
-                        font_size=15,
-                        font_family='Rockwell'))
+                    # LAYOUT FOR HOVER BOX
+                    fig.update_layout(hoverlabel=dict(
+                    font_size=15,
+                    font_family='Rockwell'))
                                 
                 else:
                     sent_df = unstack_df.reset_index().T.reset_index()
