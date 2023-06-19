@@ -397,7 +397,8 @@ def main():
             if selected_user=='Overall':
                     unstack_df = unstack_df.sort_values(by='user', 
                                 key=lambda x: x.map({user: i for i, user in enumerate(user_order)}))
-                    fig = px.bar(unstack_df,labels={'value':'message count'})
+                    fig = px.bar(unstack_df,labels={'value':'message count'},
+                                color_discrete_sequence=['#FF0000', '#00FF00', '#0000FF'])
                     # UPDATING FIG        
                     #fig.update_traces(marker_color='#790BF8')
                     fig.update_layout({'paper_bgcolor':'rgb(87,85,86)'}, # FOR PAPER BG COLOR
@@ -420,10 +421,11 @@ def main():
                               
             else:
                     sent_df = unstack_df.reset_index().T.reset_index()
-                    fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0],
-                                                marker=dict(colors=px.colors.cyclical.HSV)))
+                    fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0]))
+                    colors = ['#FF0000', '#00FF00', '#0000FF']                            
                     # UPDATING FIG
                     fig.update_traces(textfont_size=15)
+                    fig.update_traces(marker=dict(colors=colors))  
                     fig.update_traces(marker=dict(line=dict(color='#FFFFFF',width=0)))
                     # Customize the layout
                     fig.update_layout(
