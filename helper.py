@@ -6,6 +6,8 @@ import pandas as pd
 import emoji
 import re
 import string
+from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 extractor = URLExtract() # URL-EXTRACTOR
 
