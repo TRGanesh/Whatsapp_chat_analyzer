@@ -408,13 +408,11 @@ def main():
                               xaxis_tickfont=dict(size=15), # CHANGING SIZE OF X-TICKS
                               yaxis_tickfont=dict(size=15) # CHANGING SIZE OF Y-TICKS
                               )
-                            # LAYOUT FOR HOVER BOX
-                            '''fig.update_layout(hoverlabel=dict(
-                        bgcolor='black',
+                        # LAYOUT FOR HOVER BOX
+                        fig.update_layout(hoverlabel=dict(
                         font_size=15,
-                        font_family='Rockwell',
-                        font_color='#790BF8'
-                                ))'''
+                        font_family='Rockwell'))
+                                
                 else:
                     sent_df = unstack_df.reset_index().T.reset_index()
                     fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0],
