@@ -421,7 +421,7 @@ def main():
             else:
                     sent_df = unstack_df.reset_index().T.reset_index()
                     fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0],
-                                                marker=dict(colors=px.colors.sequential.Rainbow_r)))
+                                                marker=dict(colors=px.colors.cyclical.HSV)))
                     # UPDATING FIG
                     fig.update_traces(textfont_size=15)
                     fig.update_traces(marker=dict(line=dict(color='#FFFFFF',width=0)))
