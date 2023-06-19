@@ -402,9 +402,10 @@ def main():
                     unstack_df = unstack_df.sort_values(by='user', 
                                 key=lambda x: x.map({user: i for i, user in enumerate(user_order)}))
                     fig = px.bar(unstack_df,labels={'value':'message count'},
-                                color_discrete_sequence=['#FF0000', '#00FF00', '#0000FF'],width=700,height=500)
+                                color_discrete_sequence=['#FF0000', '#00FF00', '#0000FF'],width=800,height=500)
                     # UPDATING FIG        
                     #fig.update_traces(marker_color='#790BF8')
+                    fig.update_layout(legend=dict(title_text="")) # REMOVING LEGEND TITLE
                     fig.update_layout({'paper_bgcolor':'rgb(87,85,86)'}, # FOR PAPER BG COLOR
                               plot_bgcolor='#404040', # FOR PLOT BG COLOR
                               
@@ -422,6 +423,12 @@ def main():
                     fig.update_layout(hoverlabel=dict(
                     font_size=15,
                     font_family='Rockwell'))
+                    fig.update_layout(legend=dict(
+                                    orientation='v',
+                                    yanchor='middle',
+                                    y=0.9,
+                                    xanchor='right',
+                                    x=1)) 
                               
             else:
                     sent_df = unstack_df.reset_index().T.reset_index()
