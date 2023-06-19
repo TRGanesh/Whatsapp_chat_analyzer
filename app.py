@@ -394,8 +394,8 @@ def main():
                 if selected_user=='Overall':
                     fig = px.bar(unstack_df,labels={'value':'message count'})
                     # UPDATING FIG        
-                #fig.update_traces(marker_color='#790BF8')
-                fig.update_layout({'paper_bgcolor':'rgb(87,85,86)'}, # FOR PAPER BG COLOR
+                    #fig.update_traces(marker_color='#790BF8')
+                    fig.update_layout({'paper_bgcolor':'rgb(87,85,86)'}, # FOR PAPER BG COLOR
                               plot_bgcolor='#404040', # FOR PLOT BG COLOR
                               
                               xaxis=dict(showgrid=False,zeroline=False), # MAKING GRID OFF FOR X AXIS
@@ -409,12 +409,12 @@ def main():
                               yaxis_tickfont=dict(size=15) # CHANGING SIZE OF Y-TICKS
                               )
                             # LAYOUT FOR HOVER BOX
-                '''fig.update_layout(hoverlabel=dict(
+                            '''fig.update_layout(hoverlabel=dict(
                         bgcolor='black',
                         font_size=15,
                         font_family='Rockwell',
                         font_color='#790BF8'
-                    ))'''
+                                ))'''
                 else:
                     sent_df = unstack_df.reset_index().T.reset_index()
                     fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0],
