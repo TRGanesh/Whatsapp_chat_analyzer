@@ -390,11 +390,11 @@ def main():
                 )
                 st.plotly_chart(fig,use_container_width=True)
 
-                # SENTIMENT ANALYSIS
-                header('Sentiment Analysis')
-                unstack_df = helper.get_sentiment(selected_user,df)
-                sent_df = pd.DataFrame() 
-                if selected_user=='Overall':
+            # SENTIMENT ANALYSIS
+            header('Sentiment Analysis')
+            unstack_df = helper.get_sentiment(selected_user,df)
+            sent_df = pd.DataFrame() 
+            if selected_user=='Overall':
                     unstack_df = unstack_df.sort_values(by='user', 
                                 key=lambda x: x.map({user: i for i, user in enumerate(user_order)}))
                     fig = px.bar(unstack_df,labels={'value':'message count'})
@@ -406,8 +406,8 @@ def main():
                               xaxis=dict(showgrid=False,zeroline=False), # MAKING GRID OFF FOR X AXIS
                               yaxis=dict(showgrid=False,zeroline=False),# MAKING GRID OFF FOR Y AXIS
                               
-                              xaxis_title='word count', # CHANGING X-AXIS LABEL NAME
-                              yaxis_title='word', # CHANGING Y-AXIS LABEL NAME
+                              yaxis_title='word count', # CHANGING X-AXIS LABEL NAME
+                              xaxis_title='word', # CHANGING Y-AXIS LABEL NAME
                               xaxis_title_font=dict(size=15), # CHANGING SIZE OF X-AXIS LABEL NAME
                               yaxis_title_font=dict(size=15), # CHANGING SIZE OF Y-AXIS LABEL NAME
                               xaxis_tickfont=dict(size=15), # CHANGING SIZE OF X-TICKS
@@ -417,8 +417,8 @@ def main():
                     fig.update_layout(hoverlabel=dict(
                     font_size=15,
                     font_family='Rockwell'))
-                                
-                else:
+                              
+            else:
                     sent_df = unstack_df.reset_index().T.reset_index()
                     fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0],
                                                 marker=dict(colors=px.colors.sequential.Rainbow_r)))
