@@ -243,7 +243,7 @@ def main():
 
             # Rotate the x-axis ticks by 45 degrees
             #ax.set_xticklabels(ax.get_xticks(), rotation=45)
-            plt.xticks(rotation=40)
+            #plt.xticks(rotation=40)
             
             cbar = ax.collections[0].colorbar # COLLECTING CBAR VALUES
             cbar.ax.tick_params(labelsize=8) # CHANGING THEIR SIZE
