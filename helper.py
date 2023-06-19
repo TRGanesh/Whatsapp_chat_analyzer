@@ -132,7 +132,7 @@ def create_wordcloud(selected_user,df):
     # GENERATING WORCLOUD BASED ON FREQUENCIES(with filtering threshold is 3)  
     df_wc = WordCloud(height=300,width=500,min_font_size=7,
                       colormap='Set2',repeat=False).generate_from_frequencies({word: freq for word,
-                                                   freq in word_frequencies.items() if freq >= 3})
+                                                   freq in word_frequencies.items() if freq >= 1})
     
     return df_wc
 
