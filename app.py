@@ -49,7 +49,7 @@ def main():
         
         df = preprocessor.preprocess(data) # GETTING DATAFRAME FROM THAT RAW TEXT DATA 
 
-        st.dataframe(df)    
+        #st.dataframe(df)    
         
         # FETCHING UNIQUE USERS-->(TO DISPLAY IN SELECT BOX)
         user_list = df['user'].unique().tolist()
