@@ -273,7 +273,7 @@ def main():
                               xaxis=dict(showgrid=False,zeroline=False), # MAKING GRID OFF FOR X AXIS
                               yaxis=dict(showgrid=False,zeroline=False),# MAKING GRID OFF FOR Y AXIS
                               
-                              xaxis_title='Month', # CHANGING X-AXIS LABEL NAME
+                              xaxis_title='user', # CHANGING X-AXIS LABEL NAME
                               yaxis_title='Message count', # CHANGING Y-AXIS LABEL NAME
                               xaxis_title_font=dict(size=15), # CHANGING SIZE OF X-AXIS LABEL NAME
                               yaxis_title_font=dict(size=15), # CHANGING SIZE OF Y-AXIS LABEL NAME
