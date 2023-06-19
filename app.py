@@ -398,7 +398,7 @@ def main():
                     unstack_df = unstack_df.sort_values(by='user', 
                                 key=lambda x: x.map({user: i for i, user in enumerate(user_order)}))
                     fig = px.bar(unstack_df,labels={'value':'message count'},
-                                color_discrete_sequence=['#FF0000', '#00FF00', '#0000FF'],width=600,height=500)
+                                color_discrete_sequence=['#FF0000', '#00FF00', '#0000FF'],width=700,height=500)
                     # UPDATING FIG        
                     #fig.update_traces(marker_color='#790BF8')
                     fig.update_layout({'paper_bgcolor':'rgb(87,85,86)'}, # FOR PAPER BG COLOR
