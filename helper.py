@@ -7,7 +7,7 @@ import emoji
 import re
 import string
 
-extractor = URLExtract() # URL EXTRACTOR
+extractor = URLExtract() # URL-EXTRACTOR
 
 # GET STOPWORDS OF ENGLISH
 f = open('stop_words_english.txt','r')
