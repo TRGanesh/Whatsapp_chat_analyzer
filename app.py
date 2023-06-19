@@ -395,6 +395,8 @@ def main():
                 unstack_df = helper.get_sentiment(selected_user,df)
                 sent_df = pd.DataFrame() 
                 if selected_user=='Overall':
+                    unstack_df = unstack_df.sort_values(by='user', 
+                                key=lambda x: x.map({user: i for i, user in enumerate(user_order)}))
                     fig = px.bar(unstack_df,labels={'value':'message count'})
                     # UPDATING FIG        
                     #fig.update_traces(marker_color='#790BF8')
