@@ -251,7 +251,7 @@ def main():
             
             st.write('- - -')
 
-            user_order
+            user_order = []
             # ACTIVE USERS(ONLY WHEN THE SELECTED USER IS OVERALL)
             if selected_user=='Overall':
                 header('Most Active users')
