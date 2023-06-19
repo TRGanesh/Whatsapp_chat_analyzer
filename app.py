@@ -250,7 +250,8 @@ def main():
             st.pyplot(fig)
             
             st.write('- - -')
-                
+
+            user_order
             # ACTIVE USERS(ONLY WHEN THE SELECTED USER IS OVERALL)
             if selected_user=='Overall':
                 header('Most Active users')
@@ -293,6 +294,8 @@ def main():
                 
                 with col2:
                     new_df.index = range(1, len(new_df) + 1) # CHANGING INDEX RANGE OF DATAFRAME
+                    new_df = new_df.rename(columns={'count':'percent'})
+                    user_order = new_df['user].values
                     st.dataframe(new_df,use_container_width=True)
                     
             st.write('- - -')        
