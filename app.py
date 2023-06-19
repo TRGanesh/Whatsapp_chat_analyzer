@@ -393,10 +393,48 @@ def main():
                 sent_df = pd.DataFrame() 
                 if selected_user=='Overall':
                     fig = px.bar(unstack_df,labels={'value':'message count'})
+                    # UPDATING FIG        
+                #fig.update_traces(marker_color='#790BF8')
+                fig.update_layout({'paper_bgcolor':'rgb(87,85,86)'}, # FOR PAPER BG COLOR
+                              plot_bgcolor='#404040', # FOR PLOT BG COLOR
+                              
+                              xaxis=dict(showgrid=False,zeroline=False), # MAKING GRID OFF FOR X AXIS
+                              yaxis=dict(showgrid=False,zeroline=False),# MAKING GRID OFF FOR Y AXIS
+                              
+                              xaxis_title='word count', # CHANGING X-AXIS LABEL NAME
+                              yaxis_title='word', # CHANGING Y-AXIS LABEL NAME
+                              xaxis_title_font=dict(size=15), # CHANGING SIZE OF X-AXIS LABEL NAME
+                              yaxis_title_font=dict(size=15), # CHANGING SIZE OF Y-AXIS LABEL NAME
+                              xaxis_tickfont=dict(size=15), # CHANGING SIZE OF X-TICKS
+                              yaxis_tickfont=dict(size=15) # CHANGING SIZE OF Y-TICKS
+                              )
+                            # LAYOUT FOR HOVER BOX
+                '''fig.update_layout(hoverlabel=dict(
+                        bgcolor='black',
+                        font_size=15,
+                        font_family='Rockwell',
+                        font_color='#790BF8'
+                    ))'''
                 else:
                     sent_df = unstack_df.reset_index().T.reset_index()
-                    fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],
-                                            values = sent_df.iloc[1:,:][0]))
+                    fig = go.Figure(data=go.Pie(labels = sent_df.iloc[1:,:]['index'],values = sent_df.iloc[1:,:][0],
+                                                hole=0.3,marker=dict(colors=px.colors.sequential.Rainbow_r)))
+                    # UPDATING FIG
+                    fig.update_traces(textfont_size=15)
+                    fig.update_traces(marker=dict(line=dict(color='#FFFFFF',width=0)))
+                    # Customize the layout
+                    fig.update_layout(
+                        autosize=True,
+                        showlegend=False,
+                        height=600,  
+                        width=600,
+                        hoverlabel=dict(
+                        bgcolor='black',
+                        font_size=15,
+                        font_family='Rockwell',
+                        font_color='white'
+                    )
+                )
             #st.dataframe(sent_df)   
             st.plotly_chart(fig,use_container_width=True)
 
