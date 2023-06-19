@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.graph_objects as go
 import plotly.express as px
+import pandas as pd
 
 def main():
     # SETTING PAGE CONFIGURATION
