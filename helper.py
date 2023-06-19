@@ -262,6 +262,52 @@ def activity_heatmap(selected_user,df):
     activity_pt = activity_pt.reindex(sorted(activity_pt.columns,key=sort_columns),axis=1)
     
     return activity_pt
+
+# VADER SENTIMENT    
+def vader(message):
+    obj = SentimentIntensityAnalyzer()
+    scores = obj.polarity_scores(message)
+    return scores['compound']
+# TEXTBLOB SENTIMENT
+def textblob(message):
+    # Create a TextBlob object
+    blob = TextBlob(message)
+
+    # Perform sentiment analysis
+    sentiment = blob.sentiment.polarity
+    return sentiment
+# FINAL SENTIMENT
+def classify_sentiment(row):
+    # Define thresholds and rules for sentiment classification
+    positive_threshold = 0.2
+    negative_threshold = -0.1
+    
+    combined_score = row['textblob_score'] * 0.5 + row['vader_compound'] * 0.5
+    
+    if combined_score >= positive_threshold:
+        return 'Positive'
+    elif combined_score <= negative_threshold:
+        return 'Negative'
+    else:
+        return 'Neutral'
+    
+# FUCNTION TO RETURN SENTIMENT SCORED DF PER USER
+def get_sentiment(selected_user,df):
+    if selected_user!='Overall':
+        df = df[df['user']==selected_user]      
+        
+    df['vader_compound'] = df['message'].apply(vader)    
+    df['textblob_score'] = df['message'].apply(textblob)
+    
+    df['sentiment'] = df.apply(classify_sentiment, axis=1)
+    
+    unstack_df = df.groupby(['user','sentiment']).count()['message'].to_frame().unstack()
+    unstack_df.columns = unstack_df.columns.to_flat_index().map('|'.join)
+    
+    unstack_df.fillna(0,inplace=True)
+    
+    return unstack_df
+
     
            
         
