@@ -255,14 +255,16 @@ def sort_columns(column):
 def activity_heatmap(selected_user,df):
     if selected_user!='Overall':
         df = df[df['user']==selected_user]
-    
+        
+    day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     # PIVOT TABLE OF DAYS,TIME PERIOD AND COUNT OF MESSAGES ON A PARTICULAR (DAY,TIME PERIOD)
     activity_pt = df.pivot_table(index='day_name',columns='period',
                                  values='message',aggfunc='count').fillna(0)
     
     # SORTING COLUMN NAMES OF activity_pt as (00-1,1-2,2-3...)
     activity_pt = activity_pt.reindex(sorted(activity_pt.columns,key=sort_columns),axis=1)
-    
+    # SORTING INDEX(DAYS NAMES)
+    activity_pt = activity_pt.sort_index(key=key=lambda x: x.map({day: i for i, day in enumerate(day_order)}))
     return activity_pt
 
 # VADER SENTIMENT    
